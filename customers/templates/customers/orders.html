@@ -1,0 +1,42 @@
+{%extends 'customers/cbase.html'%}
+{% block body_block%}
+
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            {%for order in orders%}
+
+            <div class="col-md-2"><img class="card-img-top mb-5 mb-md-0" src="{{order.product.product_image.url}}" alt="..." style="height: 200px; width: 100px;"></div>
+            <div class="col-md-3">
+                <div class="small mb-1">SKU: BST-498</div>
+                <h1 class="display-5 fw-bolder">{{order.product.name}}</h1>
+                <div class="fs-5 mb-5">
+                    <span>Rs:{{order.product.cost}}</span>
+                </div>
+                
+               
+                    <div class="d-flex py-2">
+                    
+                </div>
+            </div>
+             <div class="col-md-4">
+               <p><strong>CurrentStatus : <span class="text-success">{{order.status}}</span></strong></p>
+               <p><strong>ExpectedDeliveryDate: <span class="text-success">{{order.delivery_date}}</span></strong></p>
+
+        </div>
+            <div class="col-md-2">
+            <a href="{%url 'remove-order' order.id %}" class="btn btn-outline-danger form-control mt-2">CancelOrder</a>
+
+        </div>
+            <hr>
+
+            {%endfor%}
+
+
+
+        </div>
+    </div>
+</section>
+
+{%endblock%}
